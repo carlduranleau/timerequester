@@ -24,7 +24,7 @@ export class RequestDetailsComponent implements OnInit {
   		this.requestId = params.requestId;
 	  	this.httpSub = this.requestApi.getRequest(this.requestId).subscribe((data: any[])=>{
 	  		this.request = data;
-	  	})
+	  	});
   	});
   }
 

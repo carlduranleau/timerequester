@@ -20,7 +20,8 @@ const routes: Routes = [
 	{ path: 'contact', component: ContactUsComponent },
 	{ path: 'requests', component: RequestListComponent },
 	{ path: 'requests/new', component: RequestFormComponent },
-	{ path: 'requests/:requestId', component: RequestDetailsComponent }
+	{ path: 'requests/:requestId', component: RequestDetailsComponent },
+  { path: 'requests/:requestId/edit', component: RequestFormComponent }
 ];
 
 @NgModule({

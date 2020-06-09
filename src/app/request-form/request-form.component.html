@@ -6,37 +6,37 @@
 			<label for="lastname">
 			  Nom
 			</label>
-			<input id="lastname" type="text" formControlName="lastname">
+			<input id="lastname" type="text" formControlName="lastname" [(ngModel)]="request.firstname">
 		</div>
 
 		<div>
 			<label for="firstname">
 			  Prénom
 			</label>
-			<input id="firstname" type="text" formControlName="firstname">
+			<input id="firstname" type="text" formControlName="firstname" [(ngModel)]="request.lastname">
 			</div>
 
 		<div>
 			<label for="email">
 			  Courriel
 			</label>
-			<input id="email" type="text" formControlName="email">
+			<input id="email" type="text" formControlName="email" [(ngModel)]="request.email">
 		</div>
 
 		<div>
 			<label for="phone">
 			  Téléphone
 			</label>
-			<input id="phone" type="text" formControlName="email">
+			<input id="phone" type="text" formControlName="phone" [(ngModel)]="request.phone">
 		</div>
 
 		<div>
 			<label for="onsite">
 			  Assistance sur place
 			</label>
-			<select id="onsite" name="onsite" formControlName="onsite">
-				<option value="no" selected>Non</option>
-				<option value="yes">Oui</option>
+			<select id="onsite" name="onsite" formControlName="onsite" [(ngModel)]="request.onsite">
+				<option value="no" selected>No</option>
+				<option value="yes">Yes</option>
 			</select>
 		</div>
 
@@ -44,9 +44,9 @@
 			<label for="description">
 			  Demande
 			</label>
-			<textarea id="description" cols="40" rows="6" formControlName="description"></textarea>
+			<textarea id="description" cols="40" rows="6" formControlName="description" [(ngModel)]="request.description"></textarea>
 		</div>
 
 	</fieldset>
-	<button class="button" type="submit">Envoyer la demande</button>
+	<button class="button" type="submit"> Save </button>
 </form>
