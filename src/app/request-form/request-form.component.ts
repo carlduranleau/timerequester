@@ -56,6 +56,10 @@ export class RequestFormComponent implements OnInit {
     }
   }
 
+  gotoRequests(): void {
+    this.router.navigate(['/requests']);
+  }
+
   onRequestSent(requestData): void {
   	if (!requestData.email || !requestData.email.includes('.') || !requestData.email.includes('@')) {
   		alert ("Une adresse courriel valide est obligatoire.");

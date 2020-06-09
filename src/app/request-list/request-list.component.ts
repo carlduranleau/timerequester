@@ -22,4 +22,8 @@ export class RequestListComponent implements OnInit {
   requestDetails(id): void {
   	this.router.navigate(['/requests', id]);
   }
+
+  createNewRequest(): void {
+    this.router.navigate(['/requests/new']);
+  }
 }
