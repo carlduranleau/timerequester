@@ -12,7 +12,14 @@ import { RequestapiService } from '../requestapi.service';
 export class RequestFormComponent implements OnInit {
 
   requestId;
-  request;
+  request:any = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      phone: '',
+      onsite: 'no',
+      description: ''
+  };
   private paramSub: any;
   private httpSub: any;
 
@@ -54,22 +61,14 @@ export class RequestFormComponent implements OnInit {
   		alert ("Une adresse courriel valide est obligatoire.");
   		return;
   	}
-    if (this.request && this.requestId) {
-      requestData.id = this.requestId;
-      this.httpClient.put<any>("http://localhost:8080/", requestData).subscribe(
-        (res) => console.log(res),
-        (err) => console.log(err)
-      );
-      alert ("Votre demande a été créé et sera répondue dans les plus brefs délais. Merci!");
-      this.requestForm.reset();
-      requestData.description = '';
-    } else {
-      this.httpClient.post<any>("http://localhost:8080/", requestData).subscribe(
-        (res) => console.log(res),
-        (err) => console.log(err)
-      );
-      alert ("Votre demande a été sauvegardé.");
-      requestData.description = '';
-    }
+
+    requestData.id = this.requestId;
+    this.httpSub = this.requestApi.saveRequest(requestData).subscribe(
+      (res) => {
+        console.log(res);
+        this.router.navigate(['/requests', res.id]);
+      },
+      (err) => console.log(err)
+    );
   }
 }

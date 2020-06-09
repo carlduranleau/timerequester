@@ -13,7 +13,14 @@ import { RequestapiService } from '../requestapi.service';
 export class RequestDetailsComponent implements OnInit {
 
   requestId;
-  request;
+  request:any = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      phone: '',
+      onsite: 'no',
+      description: ''
+  };
   private paramSub: any;
   private httpSub: any;
 
@@ -39,6 +46,10 @@ export class RequestDetailsComponent implements OnInit {
 
   writeTo(email): void {
   	alert("Creating email to " + email);
+  }
+
+  edit(id): void {
+    this.router.navigate(['/requests', id, 'edit']);
   }
 
   gotoRequests(): void {

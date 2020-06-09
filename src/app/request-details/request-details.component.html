@@ -12,7 +12,8 @@
         </mat-card-content>
         <mat-card-actions>
         	<button mat-list-item (click)="writeTo(request.email)"> Send email </button>
-        	<button mat-list-item (click)="callTo(request.phone)"> Call </button>
+            <button mat-list-item (click)="callTo(request.phone)"> Call </button>
+            <button *ngIf="request.id" mat-list-item (click)="edit(request.id)"> Edit </button>
         	<button mat-list-item (click)="gotoRequests()"> Close </button>
         </mat-card-actions>
     </mat-card>

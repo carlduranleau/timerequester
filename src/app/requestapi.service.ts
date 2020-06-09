@@ -32,4 +32,12 @@ export class RequestapiService {
   public getRequest(id) {
     return this.httpClient.get(this.REST_API_SERVER + "/requests/" + id).pipe(retry(3), catchError(this.handleError));
   }
+
+  public saveRequest(request) {
+    if (request && request.id) {
+      return this.httpClient.put<any>(this.REST_API_SERVER + "/request", request);
+    } else {
+      return this.httpClient.post<any>(this.REST_API_SERVER + "/request", request);
+    }
+  }
 }
