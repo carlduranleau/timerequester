@@ -40,4 +40,8 @@ export class RequestapiService {
       return this.httpClient.post<any>(this.REST_API_SERVER + "/request", request);
     }
   }
+
+  public deleteRequest(id) {
+    return this.httpClient.delete(this.REST_API_SERVER + "/requests/" + id).pipe(retry(3), catchError(this.handleError));
+  }
 }

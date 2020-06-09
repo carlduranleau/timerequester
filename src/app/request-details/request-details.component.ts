@@ -52,6 +52,15 @@ export class RequestDetailsComponent implements OnInit {
     this.router.navigate(['/requests', id, 'edit']);
   }
 
+  delete(id): void {
+    if (confirm('Are you sure you want to delete this request?')) {
+      this.httpSub = this.requestApi.deleteRequest(id).subscribe((data: any[])=>{
+        // We may handle errors here
+      });
+      this.router.navigate(['/requests']);
+    }
+  }
+
   gotoRequests(): void {
   	this.router.navigate(['/requests']);
   }

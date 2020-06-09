@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RequestapiService } from '../requestapi.service';
 declare var $: any;
 
@@ -12,7 +13,7 @@ export class CalendarComponent implements OnInit {
   events = [];
   isAuthenticated: boolean;
 
-  constructor(private requestApi: RequestapiService) { }
+  constructor(private router:Router, private requestApi: RequestapiService) { }
 
   ngOnInit(): void {
     this.requestApi.getRequests().subscribe((data: any[])=>{
@@ -20,7 +21,8 @@ export class CalendarComponent implements OnInit {
       this.events.forEach(e => {
         $('#calendar').fullCalendar('renderEvent', e);
       });
-    })
+    });
+    var globalRouter = this.router;
     $("#calendar").fullCalendar({
                     header: {
                         left   : 'prev,next today',
@@ -29,7 +31,10 @@ export class CalendarComponent implements OnInit {
                     },
                     navLinks   : true,
                     editable   : true,
-                    eventLimit : true
+                    eventLimit : true,
+                    eventClick : function(event) {
+                      globalRouter.navigate(['/requests', event.id]);
+                    }
                 });
    }
 
@@ -38,6 +43,7 @@ export class CalendarComponent implements OnInit {
 
     requests.forEach(r => {
       events.push({
+        id: r.id,
         title: r.firstname + " " + r.lastname,
         color: "#f9c66a",
         start: r.created
