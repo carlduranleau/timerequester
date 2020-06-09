@@ -1,0 +1,52 @@
+<h2>Demande de support</h2>
+
+<form [formGroup]="requestForm" (ngSubmit)="onRequestSent(requestForm.value)">
+	<fieldset>
+		<div>
+			<label for="lastname">
+			  Nom
+			</label>
+			<input id="lastname" type="text" formControlName="lastname">
+		</div>
+
+		<div>
+			<label for="firstname">
+			  Prénom
+			</label>
+			<input id="firstname" type="text" formControlName="firstname">
+			</div>
+
+		<div>
+			<label for="email">
+			  Courriel
+			</label>
+			<input id="email" type="text" formControlName="email">
+		</div>
+
+		<div>
+			<label for="phone">
+			  Téléphone
+			</label>
+			<input id="phone" type="text" formControlName="email">
+		</div>
+
+		<div>
+			<label for="onsite">
+			  Assistance sur place
+			</label>
+			<select id="onsite" name="onsite" formControlName="onsite">
+				<option value="no" selected>Non</option>
+				<option value="yes">Oui</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="description">
+			  Demande
+			</label>
+			<textarea id="description" cols="40" rows="6" formControlName="description"></textarea>
+		</div>
+
+	</fieldset>
+	<button class="button" type="submit">Envoyer la demande</button>
+</form>

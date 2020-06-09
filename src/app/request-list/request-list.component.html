@@ -1,0 +1,11 @@
+<h2>Requests</h2>
+<div style="padding: 13px;">
+    <table id="requestlist">
+        <th>Date</th>
+        <th>From</th>
+        <tr *ngFor="let request of requests" (click)="requestDetails(request.id)">
+            <td>{{request.created}}</td>
+            <td>{{request.firstname}} {{request.lastname}}</td>
+        </tr>
+    </table>
+</div>

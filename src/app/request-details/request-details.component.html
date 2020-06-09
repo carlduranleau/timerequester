@@ -1,0 +1,19 @@
+<h2>Request details</h2>
+<div style="padding: 13px;">
+    <mat-card style="margin-top:10px;">
+        <mat-card-header>
+            <mat-card-title>{{request.firstname}} {{request.lastname}}</mat-card-title>
+            <mat-card-subtitle>{{request.email}} / {{request.phone}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{request.description}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+        	<button mat-list-item (click)="writeTo(request.email)"> Send email </button>
+        	<button mat-list-item (click)="callTo(request.phone)"> Call </button>
+        	<button mat-list-item (click)="gotoRequests()"> Close </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

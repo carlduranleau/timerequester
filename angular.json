@@ -28,9 +28,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.less"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.less",
+              "node_modules/fullcalendar/dist/fullcalendar.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/fullcalendar/dist/fullcalendar.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,6 +98,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.less"
             ],
             "scripts": []
@@ -123,6 +130,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "time-requester-app"
+    }
+  },
+  "defaultProject": "time-requester-app",
+  "cli": {
+    "analytics": "77c063f5-7cc1-4aad-a8a7-d2dfea7d3d5a"
+  }
 }
