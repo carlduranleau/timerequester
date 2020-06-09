@@ -1,17 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestapiService } from '../requestapi.service';
 declare var $: any;
-
-/**
-const RequestSchema = {
-  email: { type: String, required: true },
-  firstname: { type: String, required: true },
-  lastname: { type: String, required: true },
-  onsite: { type: String, required: true },
-  description: { type: String, required: true },
-  createdon: { type: String, required: true },
-  status: { type: String, required: true }
-};
-*/
 
 @Component({
   selector: 'app-calendar',
@@ -20,40 +9,41 @@ const RequestSchema = {
 })
 export class CalendarComponent implements OnInit {
 
+  events = [];
   isAuthenticated: boolean;
-  constructor() { }
 
-  ngOnInit(): void{
-       setTimeout(() => {
-        $("#calendar").fullCalendar({  
-                        header: {
-                            left   : 'prev,next today',
-                            center : 'title',
-                            right  : 'month,agendaWeek,agendaDay'
-                        },
-                        navLinks   : true,
-                        editable   : true,
-                        eventLimit : true,
-                        events: [
-                            {
-                                title : 'This is your',
-                                start : '2020-03-03T12:30:00',
-                                color : '#f9c66a' // override!
-                            },
-                            {
-                                title : 'Your meeting with john',
-                                start : '2020-03-07T12:30:00',
-                                end   : '2019-03-09',
-                                color : "#019efb"
-                            },
-                            {
-                                title  : 'This is Today',
-                                start  : '2020-03-12T12:30:00',
-                                allDay : false, // will make the time show,
-                                color  : "#57cd5f"
-                            }
-                        ],  // request to load current events
-                    });
-     }, 100);
+  constructor(private requestApi: RequestapiService) { }
+
+  ngOnInit(): void {
+    this.requestApi.getRequests().subscribe((data: any[])=>{
+      this.events = this.generateEvents(data);
+      this.events.forEach(e => {
+        $('#calendar').fullCalendar('renderEvent', e);
+      });
+    })
+    $("#calendar").fullCalendar({
+                    header: {
+                        left   : 'prev,next today',
+                        center : 'title',
+                        right  : 'month,agendaWeek,agendaDay'
+                    },
+                    navLinks   : true,
+                    editable   : true,
+                    eventLimit : true
+                });
    }
+
+  generateEvents(requests) {
+    var events = [];
+
+    requests.forEach(r => {
+      events.push({
+        title: r.firstname + " " + r.lastname,
+        color: "#f9c66a",
+        start: r.created
+      });
+    });
+
+     return events;
+  }
 }
