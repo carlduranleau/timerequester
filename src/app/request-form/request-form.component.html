@@ -46,14 +46,14 @@
 			</label>
 			<select id="status" name="status" formControlName="status" [(ngModel)]="request.status">
 				<option value="New" selected>New</option>
-				<option value="Pending">Pending</option>
-				<option value="Scheduled">Scheduled</option>
-				<option value="Closed">Closed</option>
-				<option value="Rejected">Rejected</option>
+				<option *ngIf="request.id" value="Pending">Pending</option>
+				<option *ngIf="request.id" value="Scheduled">Scheduled</option>
+				<option *ngIf="request.id" value="Closed">Closed</option>
+				<option *ngIf="request.id" value="Rejected">Rejected</option>
 			</select>
 		</div>
 
-		<div>
+		<div *ngIf="request.id">
 			<label for="date">
 			  Date
 			</label>

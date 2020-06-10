@@ -25,14 +25,17 @@ export class CalendarComponent implements OnInit {
     var globalRouter = this.router;
     var globalRequestApi = this.requestApi;
     $("#calendar").fullCalendar({
-        header: {
-            left   : 'prev,next today',
-            center : 'title',
-            right  : 'month,agendaWeek,agendaDay'
-        },
         navLinks   : true,
         editable   : true,
         eventLimit : true,
+        customButtons: {
+          createButton: {
+            text: 'Create request',
+            click: function() {
+              globalRouter.navigate(['/requests/new']);
+            }
+          }
+        },
         eventClick : function(event) {
           globalRouter.navigate(['/requests', event.id]);
         },
@@ -50,6 +53,11 @@ export class CalendarComponent implements OnInit {
               }
             );
           })
+        },
+        header: {
+            left   : 'prev,next today',
+            center : 'title',
+            right  : 'createButton month,agendaWeek,agendaDay'
         }
     });
    }
