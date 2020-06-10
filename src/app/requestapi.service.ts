@@ -42,7 +42,7 @@ export class RequestapiService {
   }
 
   public deleteRequest(id) {
-    return this.httpClient.delete(this.REST_API_SERVER + "/requests/" + id).pipe(retry(3), catchError(this.handleError));
+    return this.httpClient.delete(this.REST_API_SERVER + "/request/" + id).pipe(retry(3), catchError(this.handleError));
   }
 
   public getLogs() {
