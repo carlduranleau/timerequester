@@ -32,7 +32,8 @@ const routes: Routes = [
     RequestFormComponent,
     CalendarComponent,
     RequestListComponent,
-    RequestDetailsComponent
+    RequestDetailsComponent,
+    LogsComponent
   ],
   imports: [
     BrowserModule,
