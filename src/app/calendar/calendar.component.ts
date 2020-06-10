@@ -23,19 +23,35 @@ export class CalendarComponent implements OnInit {
       });
     });
     var globalRouter = this.router;
+    var globalRequestApi = this.requestApi;
     $("#calendar").fullCalendar({
-                    header: {
-                        left   : 'prev,next today',
-                        center : 'title',
-                        right  : 'month,agendaWeek,agendaDay'
-                    },
-                    navLinks   : true,
-                    editable   : true,
-                    eventLimit : true,
-                    eventClick : function(event) {
-                      globalRouter.navigate(['/requests', event.id]);
-                    }
-                });
+        header: {
+            left   : 'prev,next today',
+            center : 'title',
+            right  : 'month,agendaWeek,agendaDay'
+        },
+        navLinks   : true,
+        editable   : true,
+        eventLimit : true,
+        eventClick : function(event) {
+          globalRouter.navigate(['/requests', event.id]);
+        },
+        eventDrop: function(event, delta, revertFunc) {
+          globalRequestApi.getRequest(event.id).subscribe((data: any)=>{
+            var request = data;
+            request.date = event.start;
+            this.httpSub = globalRequestApi.saveRequest(request).subscribe(
+              (res) => {
+                console.log(res);
+              },
+              (err) => {
+                revertFunc();
+                console.log(err);
+              }
+            );
+          })
+        }
+    });
    }
 
   generateEvents(requests) {
