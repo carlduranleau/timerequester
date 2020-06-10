@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { FormtitleDirective } from './formtitle.directive';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,6 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    FormtitleDirective,
     ContactUsComponent,
     RequestFormComponent,
     CalendarComponent,
