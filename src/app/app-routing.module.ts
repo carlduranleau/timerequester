@@ -14,6 +14,7 @@ import { RequestFormComponent } from './request-form/request-form.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { RequestListComponent } from './request-list/request-list.component';
 import { RequestDetailsComponent } from './request-details/request-details.component';
+import { LogsComponent } from './logs/logs.component';
 
 const routes: Routes = [
 	{ path: '', component: CalendarComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
 	{ path: 'requests', component: RequestListComponent },
 	{ path: 'requests/new', component: RequestFormComponent },
 	{ path: 'requests/:requestId', component: RequestDetailsComponent },
-  { path: 'requests/:requestId/edit', component: RequestFormComponent }
+  { path: 'requests/:requestId/edit', component: RequestFormComponent },
+  { path: 'logs', component: LogsComponent },
 ];
 
 @NgModule({
