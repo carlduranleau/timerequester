@@ -4,40 +4,60 @@
 	<fieldset>
 		<div>
 			<label for="lastname">
-			  Nom
+			  Name
 			</label>
 			<input id="lastname" type="text" formControlName="lastname" [(ngModel)]="request.lastname">
 		</div>
 
 		<div>
 			<label for="firstname">
-			  Prénom
+			  Surname
 			</label>
 			<input id="firstname" type="text" formControlName="firstname" [(ngModel)]="request.firstname">
 			</div>
 
 		<div>
 			<label for="email">
-			  Courriel
+			  Email
 			</label>
 			<input id="email" type="text" formControlName="email" [(ngModel)]="request.email">
 		</div>
 
 		<div>
 			<label for="phone">
-			  Téléphone
+			  Phone
 			</label>
 			<input id="phone" type="text" formControlName="phone" [(ngModel)]="request.phone">
 		</div>
 
 		<div>
 			<label for="onsite">
-			  Assistance sur place
+			  Onsite assistance
 			</label>
 			<select id="onsite" name="onsite" formControlName="onsite" [(ngModel)]="request.onsite">
 				<option value="no" selected>No</option>
 				<option value="yes">Yes</option>
 			</select>
+		</div>
+
+		<div>
+			<label for="status">
+			  Status
+			</label>
+			<select id="status" name="status" formControlName="status" [(ngModel)]="request.status">
+				<option value="New" selected>New</option>
+				<option value="Closed">Closed</option>
+				<option value="Pending">Pending</option>
+				<option value="Rejected">Rejected</option>
+				<option value="Scheduled">Scheduled</option>
+			</select>
+		</div>
+
+		<div>
+			<label for="date">
+			  Date
+			</label>
+			<input type="datetime-local" id="date" name="date" formControlName="date" [(ngModel)]="request.date">
 		</div>
 
 		<div>

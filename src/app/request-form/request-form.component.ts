@@ -18,7 +18,9 @@ export class RequestFormComponent implements OnInit {
       email: '',
       phone: '',
       onsite: 'no',
-      description: ''
+      description: '',
+      status: '',
+      date: ''
   };
   private paramSub: any;
   private httpSub: any;
@@ -32,7 +34,9 @@ export class RequestFormComponent implements OnInit {
   		email: '',
       phone: '',
   		onsite: 'no',
-      description: ''
+      description: '',
+      status: '',
+      date: ''
   	});
   }
 

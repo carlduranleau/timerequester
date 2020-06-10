@@ -46,7 +46,7 @@ export class CalendarComponent implements OnInit {
         id: r.id,
         title: r.firstname + " " + r.lastname,
         color: "#f9c66a",
-        start: r.created
+        start: r.date
       });
     });
 
