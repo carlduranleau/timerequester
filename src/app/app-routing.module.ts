@@ -17,9 +17,11 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { RequestListComponent } from './request-list/request-list.component';
 import { RequestDetailsComponent } from './request-details/request-details.component';
 import { LogsComponent } from './logs/logs.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 	{ path: '', component: CalendarComponent },
+  { path: 'login', component: LoginComponent },
 	{ path: 'contact', component: ContactUsComponent },
 	{ path: 'requests', component: RequestListComponent },
 	{ path: 'requests/new', component: RequestFormComponent },
@@ -36,7 +38,8 @@ const routes: Routes = [
     CalendarComponent,
     RequestListComponent,
     RequestDetailsComponent,
-    LogsComponent
+    LogsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

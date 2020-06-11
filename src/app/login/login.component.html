@@ -1,0 +1,20 @@
+<p appFormtitle>Please authenticate to use administration functions</p>
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+	<fieldset>
+		<div>
+			<label for="username">
+			  User
+			</label>
+			<input id="username" type="text" formControlName="username" [(ngModel)]="authinfo.username">
+		</div>
+
+		<div>
+			<label for="password">
+			  Password
+			</label>
+			<input id="password" type="password" formControlName="password" [(ngModel)]="authinfo.password">
+		</div>
+	</fieldset>
+	<button class="button" type="submit"> Authenticate </button>
+</form>
+<p *ngIf="error" style="color: red; text-weight: bold">Invalid username or pasword.</p>

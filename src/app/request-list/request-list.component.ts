@@ -20,10 +20,10 @@ export class RequestListComponent implements OnInit {
   }
 
   requestDetails(id): void {
-  	this.router.navigate(['/requests', id]);
+  	this.requestApi.navigate(['/requests', id]);
   }
 
   createNewRequest(): void {
-    this.router.navigate(['/requests/new']);
+    this.requestApi.navigate(['/requests/new']);
   }
 }

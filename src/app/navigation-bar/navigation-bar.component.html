@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
-  <button mat-button routerLink="/">Home</button>
-  <button mat-button routerLink="/requests">Requests</button>
-  <button mat-button routerLink="/contact">Contact</button>
-  <button mat-button routerLink="/logs">Logs</button>
+  <button mat-button (click)="routeTo('/')">Home</button>
+  <button mat-button (click)="routeTo('/requests')">Requests</button>
+  <button mat-button (click)="routeTo('/contact')">Contact</button>
+  <button mat-button (click)="routeTo('/logs')">Logs</button>
 </mat-toolbar>

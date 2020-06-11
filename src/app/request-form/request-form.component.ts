@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { RequestapiService } from '../requestapi.service';
 
 @Component({
@@ -27,7 +26,7 @@ export class RequestFormComponent implements OnInit {
 
   requestForm;
 
-  constructor(private router:Router, private route: ActivatedRoute, private requestApi: RequestapiService, private formBuilder: FormBuilder, private httpClient: HttpClient) {
+  constructor(private router:Router, private route: ActivatedRoute, private requestApi: RequestapiService, private formBuilder: FormBuilder) {
   	this.requestForm = this.formBuilder.group({
   		firstname: '',
   		lastname: '',
@@ -60,8 +59,8 @@ export class RequestFormComponent implements OnInit {
     }
   }
 
-  gotoRequests(): void {
-    this.router.navigate(['/requests']);
+  cancel(): void {
+    history.back();
   }
 
   onRequestSent(requestData): void {
@@ -74,7 +73,7 @@ export class RequestFormComponent implements OnInit {
     this.httpSub = this.requestApi.saveRequest(requestData).subscribe(
       (res) => {
         console.log(res);
-        this.router.navigate(['/requests', res.id]);
+        this.requestApi.navigate(['/requests', res.id]);
       },
       (err) => console.log(err)
     );

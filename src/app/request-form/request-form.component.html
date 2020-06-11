@@ -14,7 +14,7 @@
 			  Surname
 			</label>
 			<input id="firstname" type="text" formControlName="firstname" [(ngModel)]="request.firstname">
-			</div>
+		</div>
 
 		<div>
 			<label for="email">
@@ -69,5 +69,5 @@
 
 	</fieldset>
 	<button class="button" type="submit"> Save </button>
-	<button class="button" type="submit" (click)="gotoRequests()"> Cancel </button>
+	<button class="button" type="submit" (click)="cancel()"> Cancel </button>
 </form>

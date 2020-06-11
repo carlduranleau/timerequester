@@ -49,7 +49,7 @@ export class RequestDetailsComponent implements OnInit {
   }
 
   edit(id): void {
-    this.router.navigate(['/requests', id, 'edit']);
+    this.requestApi.navigate(['/requests', id, 'edit']);
   }
 
   delete(id): void {
@@ -57,11 +57,12 @@ export class RequestDetailsComponent implements OnInit {
       this.httpSub = this.requestApi.deleteRequest(id).subscribe((data: any[])=>{
         // We may handle errors here
       });
-      this.router.navigate(['/requests']);
+      this.requestApi.navigate(['/requests']);
     }
   }
 
-  gotoRequests(): void {
-  	this.router.navigate(['/requests']);
+  close(): void {
+    history.back();
+  	//this.router.navigate(['/requests']);
   }
 }
