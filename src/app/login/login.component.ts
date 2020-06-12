@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
   login(loginData): void {
     this.httpSub = this.requestApi.login(loginData.username, loginData.password).subscribe(
       (data:any) => {
-        console.log(data);
         if (data.token && data.token != "") {
+          this.requestApi.setUserToken(data.token);
         	this.router.navigate(['/'], { queryParams: { token: data.token }});
         } else {
         	this.router.navigate(['/']);

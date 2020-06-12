@@ -17,4 +17,8 @@ export class NavigationBarComponent implements OnInit {
   public routeTo(url) {
   	this.requestApi.navigate([url]);
   }
+
+  public logout() {
+  	this.requestApi.logout();
+  }
 }

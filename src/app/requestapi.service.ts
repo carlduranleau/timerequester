@@ -13,18 +13,37 @@ export class RequestapiService {
 
   private usertoken = "";
 
-  constructor(private httpClient: HttpClient, private router:Router) { }
+  private id;
+
+  constructor(private httpClient: HttpClient, private router:Router) {
+    this.id = "";//this.createUUID();
+  }
+
+  private createUUID(){
+      var dt = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = (dt + Math.random()*16)%16 | 0;
+          dt = Math.floor(dt/16);
+          return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+      });
+      return uuid;
+  }
 
   public login(user, pass) {
     try {
-        return this.validateLogin(this.httpClient.post(this.REST_API_SERVER + "/login",
-        {
-          "user":user,
-          "pass":window.btoa(pass)
-        }));
+      return this.validateLogin(this.httpClient.post(this.REST_API_SERVER + "/login",
+      {
+        "user":user,
+        "pass":window.btoa(pass)
+      }));
     } catch (err) {
       this.redirectToLogin();
     }
+  }
+
+  public logout () {
+    this.usertoken = "";
+    this.redirectToLogin();
   }
 
   public redirectToLogin() {
@@ -84,10 +103,11 @@ export class RequestapiService {
   }
 
   private validateLogin(httpSub) {
+    var service = this;
     httpSub.subscribe(
       (data:any) => {
         if (data.token) {
-          this.usertoken = data.token;
+          service.setUserToken(data.token);
         }
       },
       (err) => {
@@ -106,5 +126,9 @@ export class RequestapiService {
       return fullUrl + "?token=" + this.usertoken;
     }
     return fullUrl;
+  }
+
+  public setUserToken(token) {
+    this.usertoken = token;
   }
 }
